@@ -1,6 +1,6 @@
 from image import Image
 from png import Png
 
-image = Image(8192, 8192, [b"\xFF\x00\x00\x00\xFF\x00" * 4096, b"\x00\xFF\x00\xFF\x00\x00" * 4096] * 4096)
+image = Image(1, 1, [b"\xFF\x00\x00"])
 
-Png.write(image, "checkerboard.png", use_mock=False)
+Png.write(image, "red_pixel.png", use_mock=False)
