@@ -10,11 +10,8 @@ class Png:
 
     @staticmethod
     def write(image: Image, filename: str, use_mock=False):
-        if use_mock:
-            file = FileMock(f"{filename}.txt")
-        else:
-            file = open(filename, 'wb')
-        file.write(Png.magic_number)
-        for chunk in Png.critical_chunks:
-            chunk(image).write(file)
-        file.close()
+        file = FileMock(f"{filename}.txt") if use_mock else open(filename, "wb")
+        with file:
+            file.write(Png.magic_number)
+            for chunk in Png.critical_chunks:
+                chunk(image).write(file)
