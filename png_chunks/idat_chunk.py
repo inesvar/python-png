@@ -10,7 +10,5 @@ class IdatChunk(PngChunk):
         return b"IDAT"
     
     def chunk_data(self):
-        data = b""
-        for scanline in self.scanlines:
-            data += zlib.compress(b"\x00" + scanline)
-        return data
+        data = b"\x00".join(self.scanlines)
+        return zlib.compress(b"\x00" + data)
