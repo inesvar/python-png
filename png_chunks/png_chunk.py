@@ -1,6 +1,7 @@
+from abc import ABC
 import zlib
 
-class PngChunk:
+class PngChunk(ABC):
     @staticmethod
     def compute_crc(chunk_middle):
         crc = zlib.crc32(chunk_middle)
